@@ -1,0 +1,163 @@
+.neu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  box-shadow: var(--shadow-raised), var(--inner-highlight);
+  background: var(--surface);
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.neu-btn-sm {
+  padding: 6px 14px;
+  font-size: 0.825rem;
+  border-radius: var(--radius-sm);
+}
+
+.neu-btn-md {
+  padding: 10px 20px;
+  font-size: 0.925rem;
+  border-radius: var(--radius-md);
+}
+
+.neu-btn-lg {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  border-radius: 16px;
+}
+
+/* Hover state */
+.neu-btn:hover:not(:disabled),
+.neu-btn.force-hover {
+  box-shadow: var(--shadow-raised-hover), var(--inner-highlight);
+  border-color: var(--surface-border-hover);
+  transform: translateY(-1px);
+}
+
+/* Pressed / Active state */
+.neu-btn:active:not(:disabled),
+.neu-btn-pressed,
+.neu-btn.force-pressed {
+  box-shadow: var(--shadow-pressed) !important;
+  transform: translateY(2px) !important;
+}
+
+/* Focus state */
+.neu-btn:focus-visible,
+.neu-btn.force-focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
+  border-color: var(--accent-sync);
+}
+
+/* Disabled state */
+.neu-btn:disabled,
+.neu-btn-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  border-color: var(--surface-border);
+  transform: none !important;
+}
+
+/* Error state */
+.neu-btn-error {
+  border-color: var(--accent-loss) !important;
+  color: var(--accent-loss-text) !important;
+  box-shadow: var(--shadow-raised), 0 0 14px var(--accent-loss-glow) !important;
+}
+
+/* Loading state & spinner */
+.neu-btn-loading {
+  cursor: wait;
+}
+
+.neu-btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: neu-spin 0.75s linear infinite;
+}
+
+@keyframes neu-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Variants */
+.neu-btn-raised {
+  background: var(--surface);
+  color: var(--text-main);
+}
+
+.neu-btn-accent-online {
+  color: var(--accent-online-text);
+  border-color: rgba(61, 255, 181, 0.4);
+}
+.neu-btn-accent-online:hover:not(:disabled),
+.neu-btn-accent-online.force-hover {
+  border-color: var(--accent-online);
+  box-shadow: var(--shadow-raised-hover), 0 0 16px var(--accent-online-glow);
+}
+
+.neu-btn-accent-sync {
+  color: var(--accent-sync-text);
+  border-color: rgba(90, 160, 255, 0.4);
+}
+.neu-btn-accent-sync:hover:not(:disabled),
+.neu-btn-accent-sync.force-hover {
+  border-color: var(--accent-sync);
+  box-shadow: var(--shadow-raised-hover), 0 0 16px var(--accent-sync-glow);
+}
+
+.neu-btn-accent-loss {
+  color: var(--accent-loss-text);
+  border-color: rgba(255, 92, 122, 0.4);
+}
+.neu-btn-accent-loss:hover:not(:disabled),
+.neu-btn-accent-loss.force-hover {
+  border-color: var(--accent-loss);
+  box-shadow: var(--shadow-raised-hover), 0 0 16px var(--accent-loss-glow);
+}
+
+/* Ripple effect */
+.neu-btn-ripple {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  margin-left: -70px;
+  margin-top: -70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  animation: ripple-anim 0.5s linear forwards;
+}
+
+@keyframes ripple-anim {
+  from {
+    opacity: 0.8;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}

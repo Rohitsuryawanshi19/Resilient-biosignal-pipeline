@@ -1,0 +1,16 @@
+{
+  "name": "@mayacardio/device",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@mayacardio/core": "workspace:*",
+    "@mayacardio/engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

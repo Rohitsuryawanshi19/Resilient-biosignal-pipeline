@@ -1,0 +1,34 @@
+[Unit]
+Description=Resilient Biosignal Pipeline Ingest Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pipeline
+Group=pipeline
+WorkingDirectory=/var/lib/pipeline
+ExecStart=/usr/local/bin/pipeline run --data-dir /var/lib/pipeline
+Restart=always
+RestartSec=2s
+
+# Resource sandboxing per spec
+MemoryMax=1500M
+CPUQuota=350%
+TasksMax=64
+WatchdogSec=30s
+
+# Read-only root hardening
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/pipeline
+PrivateTmp=true
+
+# Environment
+Environment=MOCK_HOST=127.0.0.1
+Environment=MOCK_PORT=7100
+Environment=CLOUD_URL=http://127.0.0.1:8787
+Environment=CLOUD_TOKEN=mayacardio-secret-token
+
+[Install]
+WantedBy=multi-user.target

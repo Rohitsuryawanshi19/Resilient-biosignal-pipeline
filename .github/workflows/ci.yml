@@ -1,0 +1,168 @@
+name: MayaCardio Systems CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # 1. Typecheck, Lint & Content Drift Verification
+  typecheck-and-drift:
+    name: Typecheck & Docs Drift Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Verify Docs-Derived Content JSON Does Not Drift
+        run: |
+          bun run scripts/generate-web-content.ts
+          git status --porcelain
+          git diff --exit-code apps/web/src/data/generated-content.json
+          git diff --exit-code apps/web/src/data/generated-content.ts
+
+      - name: Typecheck Core & Engine Packages
+        run: |
+          cd packages/core && bunx tsc --noEmit
+          cd ../engine && bunx tsc --noEmit
+
+      - name: Typecheck Device & Cloud Apps
+        run: |
+          cd apps/device && bunx tsc --noEmit
+          cd ../cloud && bunx tsc --noEmit
+
+      - name: Typecheck Web App
+        run: |
+          cd apps/web && bunx tsc --noEmit
+
+  # 2. Unit & Property Testing
+  unit-and-property-tests:
+    name: Unit & Property Tests (Core, Engine, Device, Cloud, Web)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Test packages/core (25 Tests: Interval Algebra, Streaming vs Oracle, Fast-Check)
+        run: cd packages/core && bun test
+
+      - name: Test packages/engine (Engine Architecture & Port Adapters)
+        run: cd packages/engine && bun test
+
+      - name: Test apps/device (SQLite WAL Durability, Resumption, int24 Packers)
+        run: cd apps/device && bun test
+
+      - name: Test apps/cloud (Durable Object, Tokens, Differential Verification)
+        run: cd apps/cloud && bun test
+
+      - name: Test apps/web (Vitest IndexedDB Strict Durability & Recovery)
+        run: cd apps/web && bun run test
+
+  # 3. In-Memory Chaos Suite
+  chaos-matrix:
+    name: In-Memory Chaos Matrix (8 Failure Scenarios)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run Chaos Ingest Verification Matrix
+        run: cd apps/device && bun test test/ingest.test.ts
+
+      - name: Run 20 Cut/Restore Integration Cycles
+        run: cd apps/device && bun test test/mode.test.ts
+
+  # 4. Playwright E2E Tests against Wrangler Dev
+  e2e-playwright:
+    name: Playwright E2E & Visual Proof against Cloudflare Worker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node for Playwright
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Playwright Browsers
+        run: |
+          cd apps/web
+          bunx playwright install --with-deps chromium
+
+      - name: Build Web Application
+        run: cd apps/web && bun run build
+
+      - name: Start Cloudflare Dev Server
+        run: |
+          cd apps/cloud
+          bun run src/dev-server.ts &
+          sleep 3
+
+      - name: Start Web Preview Server
+        run: |
+          cd apps/web
+          bun run preview --port 4173 --host 127.0.0.1 &
+          sleep 3
+
+      - name: Run Playwright Tests (Pages, Responsive QA & 60s Proof)
+        run: |
+          cd apps/web
+          bunx playwright test test/pages.spec.ts test/responsive-a11y-qa.spec.ts
+
+  # 5. Lighthouse CI Audit
+  lighthouse-audit:
+    name: Mobile Lighthouse Audit (>=90 Target)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node for Lighthouse
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build Web Application
+        run: cd apps/web && bun run build
+
+      - name: Run Lighthouse Audit on Built Assets
+        run: |
+          npx @lhci/cli@0.14.x collect --staticDistDir=apps/web/dist --numberOfRuns=2
+          npx @lhci/cli@0.14.x assert --assertions.categories:performance=">=0.90" --assertions.categories:accessibility=">=0.95"

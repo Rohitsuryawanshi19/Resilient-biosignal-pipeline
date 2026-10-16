@@ -1,0 +1,103 @@
+.neu-timeline-item {
+  display: flex;
+  gap: 16px;
+  position: relative;
+  min-height: 48px;
+}
+
+.timeline-node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.timeline-node {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--surface-border);
+  box-shadow: var(--shadow-raised), var(--inner-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.timeline-node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.neu-timeline-online .timeline-node {
+  border-color: var(--accent-online);
+  box-shadow: 0 0 10px var(--accent-online-glow);
+}
+.neu-timeline-online .timeline-node-dot {
+  background: var(--accent-online);
+}
+
+.neu-timeline-offline .timeline-node {
+  border-color: var(--accent-offline);
+  box-shadow: 0 0 10px var(--accent-offline-glow);
+}
+.neu-timeline-offline .timeline-node-dot {
+  background: var(--accent-offline);
+}
+
+.neu-timeline-loss .timeline-node {
+  border-color: var(--accent-loss);
+  box-shadow: 0 0 10px var(--accent-loss-glow);
+}
+.neu-timeline-loss .timeline-node-dot {
+  background: var(--accent-loss);
+}
+
+.neu-timeline-sync .timeline-node {
+  border-color: var(--accent-sync);
+  box-shadow: 0 0 10px var(--accent-sync-glow);
+}
+.neu-timeline-sync .timeline-node-dot {
+  background: var(--accent-sync);
+}
+
+.timeline-connector {
+  width: 2px;
+  flex: 1;
+  background: var(--surface-border);
+  margin: 4px 0;
+}
+
+.timeline-content-col {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.timeline-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.timeline-time {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+}
+
+.timeline-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}

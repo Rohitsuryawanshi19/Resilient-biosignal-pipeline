@@ -1,0 +1,81 @@
+.ai-summary-banner {
+  background: var(--surface-glass);
+  border: 1px solid rgba(90, 160, 255, 0.25);
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: var(--shadow-raised), 0 0 16px rgba(90, 160, 255, 0.12);
+  margin-bottom: 20px;
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.ai-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ai-summary-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ai-badge-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent-sync);
+}
+
+.ai-source-chip {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--surface-border);
+}
+
+.chip-gemini {
+  background: rgba(90, 160, 255, 0.15);
+  color: var(--accent-sync);
+  border-color: rgba(90, 160, 255, 0.4);
+}
+
+.chip-fallback {
+  background: rgba(61, 255, 181, 0.12);
+  color: var(--accent-online);
+  border-color: rgba(61, 255, 181, 0.3);
+}
+
+.ai-safety-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.ai-dismiss-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.ai-dismiss-btn:hover {
+  color: var(--text-main);
+}
+
+.ai-summary-text {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-main);
+}

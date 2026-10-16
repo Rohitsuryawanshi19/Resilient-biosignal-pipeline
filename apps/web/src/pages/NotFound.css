@@ -1,0 +1,43 @@
+.not-found-container {
+  max-width: 680px;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-4);
+}
+
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  gap: var(--space-4);
+}
+
+.not-found-code {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: var(--accent-loss);
+  text-shadow: 0 0 24px rgba(255, 92, 122, 0.4);
+}
+
+.not-found-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.not-found-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}

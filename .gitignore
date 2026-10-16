@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.bun-cache/
+
+# Build outputs
+dist/
+.wrangler/
+build/
+
+# Standalone compiled binaries
+pipeline.exe
+pipeline-linux-arm64
+
+# Databases & local state
+*.db
+*.db-wal
+*.db-shm
+*.reserve
+
+# Environment & local secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Playwright & test reports
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
+# OS metadata
+.DS_Store
+Thumbs.db

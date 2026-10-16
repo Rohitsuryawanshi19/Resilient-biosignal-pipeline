@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0e1220" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>MayaCardio — Zero-Loss 400 Hz Biosignal Streaming &amp; WAL Durability Engine</title>
+    <meta
+      name="description"
+      content="Production biosignal pipeline &amp; SQLite WAL persistence engine for Raspberry Pi 4 edge and Cloudflare Workers Free Tier. Zero data loss verified by double-entry interval ledger."
+    />
+    <meta
+      name="keywords"
+      content="ECG, biosignals, 400Hz, systems engineering, SQLite, WAL, Cloudflare Workers, Raspberry Pi, zero data loss, durable objects"
+    />
+    <meta name="author" content="MayaCardio Systems Engineering" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mayacardio.dev/" />
+    <meta property="og:title" content="MayaCardio — Zero-Loss Biosignal Streaming Pipeline" />
+    <meta
+      property="og:description"
+      content="Zero data loss 400 Hz ECG/PPG telemetry engine with atomic SQLite WAL commits and double-entry interval accounting. Pass 8/8 chaos tests on Raspberry Pi 4."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:site_name" content="MayaCardio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MayaCardio — Zero-Loss Biosignal Streaming Pipeline" />
+    <meta
+      name="twitter:description"
+      content="Zero data loss 400 Hz ECG/PPG telemetry engine with atomic SQLite WAL commits and double-entry interval accounting."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- Favicon & PWA Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Fonts: Preconnect & Preload with display=swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

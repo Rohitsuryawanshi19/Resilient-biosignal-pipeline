@@ -1,0 +1,161 @@
+[
+  {
+    "scenario": "CRC Corruption & Recovery",
+    "injectedFault": "Single bad CRC injected on reply",
+    "expectedBehavior": "Reader detects bad CRC, issues re-read via from_index, recovers data without loss",
+    "observedBehavior": "Clean re-read recovery; 0 gaps, 0 overlaps",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 295.77939999999995
+    },
+    "details": {
+      "auditReports": [
+        {
+          "sessionId": "chaos-crc-retry",
+          "sensor": 1,
+          "gaps": [],
+          "overlaps": [],
+          "totalStored": 1630,
+          "totalLost": 0,
+          "ok": true
+        },
+        {
+          "sessionId": "chaos-crc-retry",
+          "sensor": 2,
+          "gaps": [],
+          "overlaps": [],
+          "totalStored": 1630,
+          "totalLost": 0,
+          "ok": true
+        }
+      ]
+    }
+  },
+  {
+    "scenario": "Unrecoverable CRC Mismatch",
+    "injectedFault": "Persistent corrupt CRC across all retries",
+    "expectedBehavior": "Binds retries to 3, logs honest loss \"crc_mismatch_unrecoverable\", advances stream",
+    "observedBehavior": "Recorded crc_mismatch_unrecoverable loss; audit clean",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 229.78500000000003
+    },
+    "details": {
+      "lossesCount": 1
+    }
+  },
+  {
+    "scenario": "Duplicate Replies Dropped",
+    "injectedFault": "Proxy duplicates identical block replies",
+    "expectedBehavior": "Deduplicated on (session, sensor, first_index); 0 overlaps in audit",
+    "observedBehavior": "Duplicates dropped idempotently; 0 overlaps",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 196.24779999999998
+    },
+    "details": {}
+  },
+  {
+    "scenario": "Network Outage, Auto-Switch & Catch-up",
+    "injectedFault": "Sever network to cloud mid-run, buffer to disk, restore network",
+    "expectedBehavior": "Switch to offline < 10s, zero samples dropped, catch-up < 15 min, cloud export == device export",
+    "observedBehavior": "Switched in 1101ms (<10s), caught up in 99ms, exports matched exactly",
+    "status": "PASS",
+    "timingsMs": {
+      "switchTimeMs": 1101.4969,
+      "catchupTimeMs": 98.69640000000027,
+      "durationMs": 1364.5443999999998
+    },
+    "details": {
+      "auditOk": true,
+      "switchOk": true,
+      "catchupOk": true,
+      "exportMatches": true,
+      "cloudLen": 19150,
+      "deviceLen": 19150
+    }
+  },
+  {
+    "scenario": "Crash & Hard-Kill (SIGKILL) Resilience",
+    "injectedFault": "SIGKILL daemon mid-stream across 5 iterations",
+    "expectedBehavior": "WAL auto-recovers; audit passes; zero stored samples corrupted vs ground truth",
+    "observedBehavior": "Recovered cleanly from 5 SIGKILL events; 2460 samples verified against ground truth; 0 gaps, 0 overlaps",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 587.4595999999997
+    },
+    "details": {
+      "auditOk": true,
+      "auditReports": [
+        {
+          "sessionId": "chaos-sigkill-loop",
+          "sensor": 1,
+          "gaps": [],
+          "overlaps": [],
+          "totalStored": 1240,
+          "totalLost": 0,
+          "ok": true
+        },
+        {
+          "sessionId": "chaos-sigkill-loop",
+          "sensor": 2,
+          "gaps": [],
+          "overlaps": [],
+          "totalStored": 1220,
+          "totalLost": 0,
+          "ok": true
+        }
+      ],
+      "gtOk": true,
+      "gtErrors": [],
+      "samplesChecked": 2460
+    }
+  },
+  {
+    "scenario": "Disk Full (ENOSPC) & Reserve Recovery",
+    "injectedFault": "PRAGMA max_page_count limit triggering SQLITE_FULL / ENOSPC",
+    "expectedBehavior": "Reserve file (64MB) deleted on ENOSPC; emergency loss record written with reason=\"disk_full\"; 0 overlaps",
+    "observedBehavior": "Deleted emergency reserve file, recorded loss reason=\"disk_full\", audit invariants verified",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 39.14839999999958
+    },
+    "details": {
+      "reserveExisted": true,
+      "reserveDeleted": true,
+      "diskFullCount": 1,
+      "hasDiskFullLoss": true,
+      "auditOk": true
+    }
+  },
+  {
+    "scenario": "Wall-Clock Jump (+3h / -5h) Monotonic Isolation",
+    "injectedFault": "Jump Date.now() +3 hours forward, then -5 hours backward during ingest",
+    "expectedBehavior": "No corrupted windows; monotonic timeouts unharmed; 0 gaps, 0 overlaps",
+    "observedBehavior": "Audited clean with 6540 samples; clock jumps caused 0 gaps or overlaps",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 485.87620000000015
+    },
+    "details": {
+      "auditOk": true,
+      "totalSamples": 6540
+    }
+  },
+  {
+    "scenario": "Abrupt Power-Cut Durability & Loss Bound",
+    "injectedFault": "Hard power-cut simulation with synchronous=FULL fsync-WAL recovery check",
+    "expectedBehavior": "Loss ≤ 1 in-flight reply (≤ 1s / 400 samples); WAL auto-recovers; audit passes",
+    "observedBehavior": "synchronous=FULL (2) verified; WAL clean recovery; all 500 durable samples intact with 0 gaps/overlaps",
+    "status": "PASS",
+    "timingsMs": {
+      "durationMs": 80.82140000000027
+    },
+    "details": {
+      "pragmaSync": 2,
+      "pragmaJournal": "wal",
+      "auditOk": true,
+      "totalSamples": 500
+    }
+  }
+]

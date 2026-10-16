@@ -1,0 +1,11 @@
+{
+  "name": "@mayacardio/chaos",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@mayacardio/core": "workspace:../../packages/core"
+  }
+}

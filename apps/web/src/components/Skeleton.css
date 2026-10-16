@@ -1,0 +1,60 @@
+.neu-skeleton {
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-pressed), var(--inner-highlight);
+  border: 1px solid var(--surface-border);
+}
+
+.neu-skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  animation: neu-shimmer 1.8s infinite;
+}
+
+[data-theme='light'] .neu-skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes neu-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.neu-skeleton-text {
+  height: 16px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+}
+
+.neu-skeleton-circular {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.neu-skeleton-rectangular {
+  border-radius: var(--radius-md);
+  width: 100%;
+  height: 80px;
+}

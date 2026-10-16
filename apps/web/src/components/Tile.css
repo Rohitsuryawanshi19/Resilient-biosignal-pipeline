@@ -1,0 +1,99 @@
+.neu-tile-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.neu-tile {
+  width: 14px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  position: relative;
+}
+
+.neu-tile:hover {
+  filter: brightness(1.2);
+}
+
+.neu-tile-empty {
+  background: var(--surface-border);
+  opacity: 0.2;
+}
+
+.neu-tile-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border: 1px solid var(--surface-border-hover);
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  pointer-events: none;
+  min-width: 160px;
+  backdrop-filter: blur(8px);
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.badge-stored {
+  background: rgba(61, 255, 181, 0.15);
+  color: var(--accent-online);
+}
+
+.badge-lost {
+  background: rgba(255, 92, 122, 0.15);
+  color: var(--accent-loss);
+}
+
+.badge-pending-sync {
+  background: rgba(90, 160, 255, 0.15);
+  color: var(--accent-sync);
+}
+
+.sensor-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.tooltip-body {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.tooltip-label {
+  color: var(--text-muted);
+}
+
+.tooltip-val {
+  font-weight: 500;
+}
+
+.tooltip-reason {
+  color: var(--accent-loss);
+  word-break: break-all;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}

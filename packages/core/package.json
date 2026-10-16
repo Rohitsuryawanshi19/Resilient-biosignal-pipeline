@@ -1,0 +1,11 @@
+{
+  "name": "@mayacardio/core",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "fast-check": "^3.22.0"
+  }
+}

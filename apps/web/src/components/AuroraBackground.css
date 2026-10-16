@@ -1,0 +1,60 @@
+.aurora-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.65;
+}
+
+.aurora-blob {
+  position: absolute;
+  filter: blur(100px);
+  border-radius: 50%;
+  animation: aurora-drift 24s infinite alternate ease-in-out;
+  transform: translateZ(0);
+}
+
+.aurora-blob-1 {
+  width: 520px;
+  height: 520px;
+  background: var(--accent-sync-glow);
+  top: -160px;
+  left: -120px;
+}
+
+.aurora-blob-2 {
+  width: 480px;
+  height: 480px;
+  background: var(--accent-online-glow);
+  top: 35%;
+  right: -140px;
+  animation-duration: 28s;
+  animation-delay: -6s;
+}
+
+.aurora-blob-3 {
+  width: 420px;
+  height: 420px;
+  background: var(--accent-loss-glow);
+  bottom: -120px;
+  left: 20%;
+  animation-duration: 32s;
+  animation-delay: -12s;
+}
+
+.aurora-static .aurora-blob {
+  animation: none !important;
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(70px, 35px) scale(1.08);
+  }
+  100% {
+    transform: translate(-35px, 70px) scale(0.94);
+  }
+}

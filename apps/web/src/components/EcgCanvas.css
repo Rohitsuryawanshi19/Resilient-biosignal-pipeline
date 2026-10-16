@@ -1,0 +1,103 @@
+.ecg-panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ecg-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ecg-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ecg-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-online);
+  box-shadow: 0 0 8px var(--accent-online);
+}
+
+.ecg-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.bpm-readout {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.bpm-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-online);
+  line-height: 1;
+}
+
+.bpm-unit {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.canvas-container {
+  width: 100%;
+  height: 200px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-pressed);
+  border: 1px solid var(--surface-border);
+  overflow: hidden;
+  position: relative;
+}
+
+.ecg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ecg-footer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  color: var(--text-muted);
+}
+
+.chip-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.chip-mode-online {
+  color: var(--accent-online-text);
+  border-color: rgba(61, 255, 181, 0.3);
+}
+
+.chip-mode-offline {
+  color: var(--accent-offline-text);
+  border-color: rgba(255, 180, 84, 0.3);
+}

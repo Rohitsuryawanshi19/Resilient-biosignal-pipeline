@@ -1,0 +1,281 @@
+.eng-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-bottom: var(--space-12);
+}
+
+.eng-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.eng-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.eng-subtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  max-width: 760px;
+}
+
+/* Tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tradeoff-table,
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  text-align: left;
+}
+
+.tradeoff-table th,
+.tradeoff-table td,
+.budget-table th,
+.budget-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-color);
+  line-height: 1.5;
+}
+
+.tradeoff-table th,
+.budget-table th {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Math Foundation Layout */
+.math-foundation-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.math-formula-box {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--surface-translucent);
+  border: 1px solid var(--accent-sync);
+  box-shadow: var(--shadow-raised), 0 0 24px rgba(90, 160, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-align: center;
+  align-items: center;
+}
+
+.formula-lbl {
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--accent-sync);
+  font-weight: 700;
+}
+
+.formula-display {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.f-set { color: #b27aff; }
+.f-stored { color: var(--accent-online); }
+.f-lost { color: var(--accent-loss); }
+.formula-sep { color: var(--text-muted); font-size: 1.5rem; }
+
+.formula-explanation {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.math-properties-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .math-properties-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.math-prop {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface-translucent);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-inset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.prop-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--accent-sync);
+}
+
+.prop-desc {
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Bugs Grid */
+.bugs-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 840px) {
+  .bugs-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bug-card {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface-translucent);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-raised);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bug-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bug-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-loss);
+}
+
+.bug-card-name {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.bug-card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bug-subhead {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.bug-card-text {
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Guarantees Layout */
+.guarantees-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .guarantees-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.guarantee-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.col-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin: 0;
+}
+
+.guarantee-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.non-guarantee-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.non-guarantee-item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: rgba(255, 180, 84, 0.06);
+  border-left: 3px solid var(--accent-offline);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ng-name {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--accent-offline);
+}
+
+.ng-desc {
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Budget Math */
+.budget-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.budget-intro {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}

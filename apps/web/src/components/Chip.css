@@ -1,0 +1,97 @@
+.neu-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-raised), var(--inner-highlight);
+  color: var(--text-main);
+  user-select: none;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.neu-chip-sm {
+  padding: 2px 8px;
+  font-size: 0.725rem;
+  gap: 4px;
+}
+
+.neu-chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+.neu-chip.is-interactive {
+  cursor: pointer;
+}
+
+.neu-chip.is-interactive:hover,
+.neu-chip.force-hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-raised-hover), var(--inner-highlight);
+  border-color: var(--surface-border-hover);
+}
+
+.neu-chip.is-interactive:active {
+  box-shadow: var(--shadow-pressed) !important;
+  transform: translateY(1px) !important;
+}
+
+.neu-chip.is-interactive:focus-visible,
+.neu-chip.force-focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
+}
+
+.neu-chip.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variant styles */
+.neu-chip-online {
+  color: var(--accent-online-text);
+  border-color: rgba(61, 255, 181, 0.35);
+}
+
+.neu-chip-offline {
+  color: var(--accent-offline-text);
+  border-color: rgba(255, 180, 84, 0.35);
+}
+
+.neu-chip-loss {
+  color: var(--accent-loss-text);
+  border-color: rgba(255, 92, 122, 0.35);
+}
+
+.neu-chip-sync {
+  color: var(--accent-sync-text);
+  border-color: rgba(90, 160, 255, 0.35);
+}
+
+.neu-chip-remove {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s ease;
+}
+
+.neu-chip-remove:hover {
+  color: var(--accent-loss);
+}

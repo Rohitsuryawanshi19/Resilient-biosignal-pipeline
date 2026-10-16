@@ -1,0 +1,20 @@
+{
+  "name": "MayaCardio Systems Biosignal Pipeline",
+  "short_name": "MayaCardio",
+  "description": "Zero-data-loss 400 Hz biosignal streaming & WAL persistence engine for Raspberry Pi 4 and Cloudflare Workers Free Tier.",
+  "start_url": "/#/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0e1220",
+  "theme_color": "#0e1220",
+  "categories": ["medical", "engineering", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64 128x128 256x256 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

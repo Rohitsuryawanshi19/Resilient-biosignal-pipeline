@@ -1,0 +1,90 @@
+.neu-segmented-control {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-pressed), var(--inner-highlight);
+  position: relative;
+  gap: 2px;
+}
+
+.neu-segmented-sm {
+  padding: 3px;
+  border-radius: var(--radius-md);
+}
+
+.neu-segmented-lg {
+  padding: 6px;
+  border-radius: var(--radius-full);
+}
+
+.neu-segmented-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  user-select: none;
+  transition: color 0.2s ease;
+  z-index: 1;
+}
+
+.neu-segmented-sm .neu-segmented-btn {
+  padding: 4px 10px;
+  font-size: 0.775rem;
+  border-radius: var(--radius-sm);
+}
+
+.neu-segmented-lg .neu-segmented-btn {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+.neu-segmented-btn:hover:not(.is-disabled) {
+  color: var(--text-main);
+}
+
+.neu-segmented-btn.is-selected {
+  color: var(--text-main);
+}
+
+.neu-segmented-btn.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.neu-segmented-btn:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 1px;
+}
+
+.neu-segmented-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--surface-2);
+  box-shadow: var(--shadow-raised), var(--inner-highlight);
+  border: 1px solid var(--surface-border);
+  z-index: -1;
+}
+
+.neu-segmented-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.neu-segmented-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

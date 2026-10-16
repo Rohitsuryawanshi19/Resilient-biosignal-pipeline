@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-10-15T21:18:16.237Z",
+  "events": [
+    {
+      "id": "evt-1",
+      "type": "mode_switch",
+      "timestampMono": 803.3898,
+      "details": {
+        "from": "offline",
+        "to": "online"
+      }
+    },
+    {
+      "id": "evt-2",
+      "type": "network_cut",
+      "timestampMono": 904.8122,
+      "details": {
+        "target": "cloud",
+        "mechanism": "socket_sever"
+      }
+    },
+    {
+      "id": "evt-3",
+      "type": "mode_switch",
+      "timestampMono": 2006.3099,
+      "details": {
+        "from": "online",
+        "to": "offline",
+        "durationMs": 1101.4969
+      }
+    },
+    {
+      "id": "evt-4",
+      "type": "recovery",
+      "timestampMono": 2006.5427,
+      "details": {
+        "source": "network_restore"
+      }
+    },
+    {
+      "id": "evt-5",
+      "type": "catchup_done",
+      "timestampMono": 2105.2482,
+      "details": {
+        "blocksSynced": 1915,
+        "lossesSynced": 0,
+        "durationMs": 98.69640000000027
+      }
+    },
+    {
+      "id": "evt-6",
+      "type": "process_kill",
+      "timestampMono": 2266.8338,
+      "details": {
+        "signal": "SIGKILL",
+        "pid": 5504
+      }
+    },
+    {
+      "id": "evt-7",
+      "type": "recovery",
+      "timestampMono": 2278.5689,
+      "details": {
+        "source": "daemon_restart"
+      }
+    },
+    {
+      "id": "evt-8",
+      "type": "process_kill",
+      "timestampMono": 2365.6745,
+      "details": {
+        "signal": "SIGKILL",
+        "pid": 17624
+      }
+    },
+    {
+      "id": "evt-9",
+      "type": "recovery",
+      "timestampMono": 2369.8902,
+      "details": {
+        "source": "daemon_restart"
+      }
+    },
+    {
+      "id": "evt-10",
+      "type": "process_kill",
+      "timestampMono": 2457.2713,
+      "details": {
+        "signal": "SIGKILL",
+        "pid": 17536
+      }
+    },
+    {
+      "id": "evt-11",
+      "type": "recovery",
+      "timestampMono": 2461.549,
+      "details": {
+        "source": "daemon_restart"
+      }
+    },
+    {
+      "id": "evt-12",
+      "type": "process_kill",
+      "timestampMono": 2562.9179,
+      "details": {
+        "signal": "SIGKILL",
+        "pid": 17544
+      }
+    },
+    {
+      "id": "evt-13",
+      "type": "recovery",
+      "timestampMono": 2568.6389,
+      "details": {
+        "source": "daemon_restart"
+      }
+    },
+    {
+      "id": "evt-14",
+      "type": "process_kill",
+      "timestampMono": 2701.8579,
+      "details": {
+        "signal": "SIGKILL",
+        "pid": 5976
+      }
+    },
+    {
+      "id": "evt-15",
+      "type": "recovery",
+      "timestampMono": 2706.3905,
+      "details": {
+        "source": "daemon_restart"
+      }
+    }
+  ]
+}
