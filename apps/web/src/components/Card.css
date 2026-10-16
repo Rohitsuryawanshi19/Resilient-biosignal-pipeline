@@ -1,20 +1,26 @@
 .neu-card {
   position: relative;
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   background: var(--surface-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--surface-border);
   box-shadow: var(--shadow-raised), var(--inner-highlight);
   perspective: 1000px;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
   overflow: hidden;
 }
 
 .neu-card-inner {
-  padding: 24px;
+  padding: 28px 30px;
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .neu-card-inner {
+    padding: 20px 18px;
+  }
 }
 
 .neu-card:hover {
@@ -23,60 +29,64 @@
 }
 
 .glow-mint {
-  border-color: rgba(61, 255, 181, 0.2);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 .glow-mint:hover {
-  border-color: rgba(61, 255, 181, 0.45);
-  box-shadow: var(--shadow-raised-hover), 0 0 24px var(--accent-online-glow);
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: var(--shadow-raised-hover), 0 0 28px var(--accent-online-glow), var(--inner-highlight);
 }
 
 .glow-amber {
-  border-color: rgba(255, 180, 84, 0.2);
+  border-color: rgba(245, 158, 11, 0.2);
 }
 .glow-amber:hover {
-  border-color: rgba(255, 180, 84, 0.45);
-  box-shadow: var(--shadow-raised-hover), 0 0 24px var(--accent-offline-glow);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: var(--shadow-raised-hover), 0 0 28px var(--accent-offline-glow), var(--inner-highlight);
 }
 
 .glow-coral {
-  border-color: rgba(255, 92, 122, 0.2);
+  border-color: rgba(244, 63, 94, 0.2);
 }
 .glow-coral:hover {
-  border-color: rgba(255, 92, 122, 0.45);
-  box-shadow: var(--shadow-raised-hover), 0 0 24px var(--accent-loss-glow);
+  border-color: rgba(244, 63, 94, 0.45);
+  box-shadow: var(--shadow-raised-hover), 0 0 28px var(--accent-loss-glow), var(--inner-highlight);
 }
 
 .glow-blue {
-  border-color: rgba(90, 160, 255, 0.2);
+  border-color: rgba(59, 130, 246, 0.2);
 }
 .glow-blue:hover {
-  border-color: rgba(90, 160, 255, 0.45);
-  box-shadow: var(--shadow-raised-hover), 0 0 24px var(--accent-sync-glow);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: var(--shadow-raised-hover), 0 0 28px var(--accent-sync-glow), var(--inner-highlight);
 }
 
 .neu-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
-  padding-bottom: 12px;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--surface-border);
+  gap: var(--space-3);
 }
 
 .neu-card-title {
-  font-size: 1.05rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-main);
   display: flex;
   align-items: center;
   gap: 10px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
 }
 
 .neu-card-action {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 @media (pointer: coarse), (prefers-reduced-motion: reduce) {

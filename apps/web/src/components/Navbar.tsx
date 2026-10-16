@@ -29,47 +29,49 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header className="neu-navbar">
-        <div className="nav-left">
-          <div className="brand" onClick={() => onNavigate('/')} role="button" tabIndex={0}>
-            <span className="brand-dot" />
-            <span className="brand-name">MayaCardio</span>
+        <div className="neu-navbar-inner">
+          <div className="nav-left">
+            <div className="brand" onClick={() => onNavigate('/')} role="button" tabIndex={0}>
+              <span className="brand-dot" />
+              <span className="brand-name">MayaCardio</span>
+            </div>
+
+            <div className={`source-badge badge-${badge.toLowerCase()}`}>
+              <span className="badge-pulse" />
+              <span>{badge}</span>
+            </div>
           </div>
 
-          <div className={`source-badge badge-${badge.toLowerCase()}`}>
-            <span className="badge-pulse" />
-            <span>{badge}</span>
-          </div>
-        </div>
+          <nav className="nav-center desktop-only" aria-label="Main Navigation">
+            {navItems.map((item) => (
+              <button
+                key={item.path}
+                className={`nav-link ${currentPath === item.path ? 'nav-link-active' : ''}`}
+                onClick={() => onNavigate(item.path)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
 
-        <nav className="nav-center desktop-only" aria-label="Main Navigation">
-          {navItems.map((item) => (
-            <button
-              key={item.path}
-              className={`nav-link ${currentPath === item.path ? 'nav-link-active' : ''}`}
-              onClick={() => onNavigate(item.path)}
+          <div className="nav-right">
+            <Button variant="raised" size="sm" onClick={onToggleTheme}>
+              {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+            </Button>
+            <Button
+              variant="accent-online"
+              size="sm"
+              onClick={() => onNavigate('/lab')}
+              className="desktop-only"
             >
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        <div className="nav-right">
-          <Button variant="raised" size="sm" onClick={onToggleTheme}>
-            {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
-          </Button>
-          <Button
-            variant="accent-online"
-            size="sm"
-            className="desktop-only"
-            onClick={() => onNavigate('/lab')}
-          >
-            Launch Lab &rarr;
-          </Button>
+              Launch Lab &rarr;
+            </Button>
+          </div>
         </div>
       </header>
 
-      {/* Mobile Bottom Tab Bar */}
-      <nav className="mobile-tab-bar mobile-only" aria-label="Mobile Navigation">
+      {/* Mobile Tab Bar */}
+      <nav className="mobile-tab-bar" aria-label="Mobile Navigation">
         {navItems.map((item) => (
           <button
             key={item.path}

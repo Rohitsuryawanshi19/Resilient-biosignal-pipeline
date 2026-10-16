@@ -136,7 +136,7 @@ export const App: React.FC = () => {
           <span>MayaCardio Systems Biosignal Pipeline</span>
           <span className="footer-divider">•</span>
           <a
-            href="https://github.com/mayacardio/pipeline"
+            href="https://github.com/Rohitsuryawanshi19/Resilient-biosignal-pipeline"
             target="_blank"
             rel="noreferrer"
             className="footer-link"

@@ -1,21 +1,20 @@
 import React from 'react';
 import { Card } from '../components/Card.js';
 import { Button } from '../components/Button.js';
-import { REPO_CONTENT } from '../data/generated-content.js';
 import './About.css';
 
 export const About: React.FC = () => {
   return (
     <div className="about-container">
       <header className="about-header">
-        <h1 className="about-title">About the MayaCardio Engine &amp; AI Transparency</h1>
+        <h1 className="about-title">About MayaCardio &amp; AI Transparency</h1>
         <p className="about-subtitle">
           Designed and verified for clinical-grade reliability, low-level efficiency, and zero data loss.
         </p>
       </header>
 
       {/* Systems Engineering Resume Profile */}
-      <Card header="Systems Engineering Profile &amp; Core Philosophy" glowColor="mint">
+      <Card header="Systems Engineering Profile & Core Philosophy" glowColor="mint">
         <div className="about-profile">
           <p className="profile-text">
             This project demonstrates how a systems engineer designs, implements, and verifies
@@ -25,23 +24,23 @@ export const About: React.FC = () => {
 
           <div className="profile-highlights">
             <div className="profile-highlight">
-              <span className="hl-title">Low-Level Durability</span>
-              <span className="hl-desc">Atomic SQLite WAL fsync per 1-second block; 64 MB emergency reserve file.</span>
+              <span className="hl-title font-mono">Low-Level Durability</span>
+              <span className="hl-desc">Atomic SQLite WAL fsync per 1-second block; 64 MB emergency reserve file for crash-safety.</span>
             </div>
             <div className="profile-highlight">
-              <span className="hl-title">Pure Mathematics</span>
-              <span className="hl-desc">Double-entry interval ledger algebra (S &cap; L = &empty;); O(1) circular buffers.</span>
+              <span className="hl-title font-mono">Pure Mathematics</span>
+              <span className="hl-desc">Double-entry interval ledger algebra (S &cap; L = &empty;); strictly bounded O(1) circular buffers.</span>
             </div>
             <div className="profile-highlight">
-              <span className="hl-title">Edge Cloud Cost</span>
-              <span className="hl-desc">1-second int24 BLOB packing fits 100% within Cloudflare Workers Free Tier.</span>
+              <span className="hl-title font-mono">Edge Cloud Cost</span>
+              <span className="hl-desc">1-second int24 BLOB packing fits 100% within Cloudflare Workers Free Tier limits.</span>
             </div>
           </div>
         </div>
       </Card>
 
       {/* AI Transparency Disclosure (AI_USAGE.md) */}
-      <Card header="AI Tools Disclosure &amp; Verification Protocol (AI_USAGE.md)" glowColor="blue">
+      <Card header="AI Tools Disclosure & Verification Protocol (AI_USAGE.md)" glowColor="blue">
         <div className="ai-disclosure-content">
           <div className="disclosure-block">
             <h3 className="block-title">1. Development-Time AI Assistance</h3>
@@ -75,7 +74,7 @@ export const About: React.FC = () => {
       </Card>
 
       {/* Tech Stack Matrix */}
-      <Card header="Full Technology Stack &amp; Zero-External-Dependency Philosophy" glowColor="amber">
+      <Card header="Full Technology Stack & Zero-External-Dependency Philosophy" glowColor="amber">
         <div className="tech-stack-grid">
           <div className="tech-item">
             <span className="tech-name font-mono">Edge Pipeline</span>
@@ -90,27 +89,28 @@ export const About: React.FC = () => {
             <span className="tech-desc">Cloudflare Workers, Durable Objects, SQLite edge storage, WebSocket Hibernation API.</span>
           </div>
           <div className="tech-item">
-            <span className="tech-name font-mono">Web UI &amp; Lab</span>
+            <span className="tech-name font-mono">Web UI & Lab</span>
             <span className="tech-desc">Vite, React 19, Motion springs, 60fps HTML5 Canvas ECG, IndexedDB strict durability adapter.</span>
           </div>
         </div>
       </Card>
 
       {/* Candidate Contact & Repository Card */}
-      <Card header="Repository, Artifacts &amp; Candidate Contact" glowColor="mint">
+      <Card header="Repository, Artifacts & Contact" glowColor="mint">
         <div className="contact-card-content">
-          <div className="contact-links">
+          <div className="contact-row">
             <a
-              href="https://github.com/mayacardio/pipeline"
+              href="https://github.com/Rohitsuryawanshi19/Resilient-biosignal-pipeline"
               target="_blank"
               rel="noreferrer"
               className="neu-btn neu-btn-accent-sync neu-btn-md"
             >
               GitHub Repository &rarr;
             </a>
-            <span className="resource-note font-mono">
-              Linux-ARM64 Compiled Binary: <code>./pipeline-linux-arm64</code>
-            </span>
+            <div className="binary-pill font-mono">
+              <span>Linux-ARM64 Binary:</span>
+              <code>./pipeline-linux-arm64</code>
+            </div>
           </div>
 
           <div className="license-info">

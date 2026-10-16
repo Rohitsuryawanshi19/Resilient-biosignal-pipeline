@@ -27,7 +27,7 @@ Run these directly on a fresh Raspberry Pi OS 64-bit installation (no Docker req
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/mayacardio/pipeline.git && cd pipeline
+git clone https://github.com/Rohitsuryawanshi19/Resilient-biosignal-pipeline.git && cd Resilient-biosignal-pipeline
 
 # 2. Install Bun runtime
 curl -fsSL https://bun.sh/install | bash && source ~/.bashrc
